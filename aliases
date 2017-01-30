@@ -1,0 +1,4 @@
+alias top_commands='history | awk '\''{a[$2]++}END{for(i in a){print a[i] " " i}}'\'' | sort -rn | head'
+alias notify_me='terminal-notifier -message "Done" -title "Done" -sound "Alarm"'
+
+function processkill() { ps aux | grep $1 | grep -v grep | awk '{print $2}' | xargs kill -9 }

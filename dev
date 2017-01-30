@@ -1,0 +1,5 @@
+# Node
+eval "$(nodenv init -)"
+
+# Dotenv
+eval "$(direnv hook zsh)"

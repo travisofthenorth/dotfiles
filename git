@@ -1,0 +1,18 @@
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
+function gac() { git add .; git commit -m "$1"; }
+function gfy { git add .; git can; }
+function gco() { git checkout $2; }
+function grm() { git fetch origin master:master && git rebase master }
+
+alias ggpull='git pull origin $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
+alias ggtrack='git branch --set-upstream-to=origin/$(current_branch) $(current_branch)'
+alias grh='git reset --hard head'
+
+alias show_merged='git branch --merged | grep -v "\*" | grep -v master'
+alias delete_merged='show_merged | xargs -n 1 git branch -d'
