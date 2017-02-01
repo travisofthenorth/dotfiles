@@ -14,3 +14,6 @@ source $DOTFILEPATH/docker
 source $DOTFILEPATH/git
 source $DOTFILEPATH/ruby
 source $DOTFILEPATH/zsh-history-substring-search.zsh
+
+# Unalias rm so zsh doesn't confirm each time
+unalias rm
