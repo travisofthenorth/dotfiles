@@ -2,3 +2,7 @@ alias top_commands='history | awk '\''{a[$2]++}END{for(i in a){print a[i] " " i}
 alias notify_me='terminal-notifier -message "Done" -title "Done" -sound "Alarm"'
 
 function processkill() { ps aux | grep $1 | grep -v grep | awk '{print $2}' | xargs kill -9 }
+
+function throttle() { sudo sysctl debug.lowpri_throttle_enabled=$1 }
+
+function wifi_password() { security find-generic-password -wa $1; }
