@@ -12,6 +12,7 @@ source $DOTFILEPATH/blueapron
 source $DOTFILEPATH/dev
 source $DOTFILEPATH/docker
 source $DOTFILEPATH/git
+source $DOTFILEPATH/go
 source $DOTFILEPATH/ruby
 source $DOTFILEPATH/zsh-history-substring-search.zsh
 
