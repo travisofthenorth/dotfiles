@@ -9,10 +9,12 @@ function gfy { git add .; git can; }
 function gco() { git checkout $2; }
 function grm() { git fetch origin master:master && git rebase master }
 
+alias show_merged='git branch --merged | grep -v "\*" | grep -v master'
+alias delete_merged='show_merged | xargs -n 1 git branch -d'
+
 alias ggpull='git pull origin $(current_branch)'
 alias ggpush='git push origin $(current_branch)'
 alias ggtrack='git branch --set-upstream-to=origin/$(current_branch) $(current_branch)'
 alias grh='git reset --hard head'
+alias gum='gco master && git pull && delete_merged'
 
-alias show_merged='git branch --merged | grep -v "\*" | grep -v master'
-alias delete_merged='show_merged | xargs -n 1 git branch -d'
