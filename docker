@@ -1,4 +1,5 @@
 alias dc='docker-compose'
-alias drm_dangling='docker rmi $(docker images -f dangling=true -q)'
+alias drm_dangling_images='docker rmi $(docker images -f dangling=true -q)'
 alias drm_containers='docker rm $(docker ps -a -q)'
 alias drm_volumes='docker volume rm $(docker volume ls -q)'
+alias drm_stopped_containers='docker ps -aq --no-trunc | xargs docker rm'
