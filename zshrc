@@ -6,15 +6,21 @@ plugins=(git rake-fast brew bundler common-aliases rails sublime web-search)
 
 source $ZSH/oh-my-zsh.sh
 
-DOTFILEPATH=~/dotfiles
-source $DOTFILEPATH/machine
-source $DOTFILEPATH/blueapron
-source $DOTFILEPATH/dev
-source $DOTFILEPATH/docker
-source $DOTFILEPATH/git
-source $DOTFILEPATH/go
-source $DOTFILEPATH/ruby
-source $DOTFILEPATH/zsh-history-substring-search.zsh
+pushd ~/dotfiles > /dev/null
+
+source machine
+source blueapron
+source dev
+source docker
+source git
+source go
+source ruby
+source zsh-history-substring-search.zsh
 
 # Unalias rm so zsh doesn't confirm each time
 unalias rm
+
+# Copy configuration files to home directory
+\cp psqlrc ~/.psqlrc
+
+popd > /dev/null
