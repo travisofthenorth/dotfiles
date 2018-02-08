@@ -9,6 +9,21 @@ function gfy { git add .; git can; }
 function gco() { git checkout $2; }
 function grm() { git fetch origin master:master && git rebase master }
 
+function reset_master() {
+  remote=${1:-upstream}
+  git fetch $remote master:master
+  gco master
+  git reset --hard $remote/master
+  ggpush
+}
+
+function fetch_upstream_and_rebase() {
+  current_branch=$(current_branch)
+  reset_master $1 || exit 1
+  gco $current_branch
+  git rebase master
+}
+
 alias show_merged='git branch --merged | grep -v "\*" | grep -v master'
 alias delete_merged='show_merged | xargs -n 1 git branch -d'
 
