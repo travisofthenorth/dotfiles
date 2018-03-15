@@ -9,7 +9,7 @@ function gfy { git add .; git can; }
 function gco() { git checkout $2; }
 function grm() { git fetch origin master:master && git rebase master }
 
-function reset_master() {
+function git_reset_origin_to_upstream() {
   remote=${1:-upstream}
   git fetch $remote master:master
   gco master
@@ -17,9 +17,9 @@ function reset_master() {
   ggpush
 }
 
-function fetch_upstream_and_rebase() {
+function git_fetch_upstream_and_rebase() {
   current_branch=$(current_branch)
-  reset_master $1 || exit 1
+  git_reset_origin_to_upstream $1 || exit 1
   gco $current_branch
   git rebase master
 }
