@@ -9,7 +9,6 @@ source $ZSH/oh-my-zsh.sh
 pushd ~/dotfiles > /dev/null
 
 source machine
-source blueapron
 source dev
 source docker
 source git
