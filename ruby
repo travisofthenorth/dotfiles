@@ -1,5 +1,4 @@
 export BUNDLER_EDITOR=sublime
-export SPEC_OPTS="--format progress"
 
 alias test_migrate='RAILS_ENV=test rake db:drop db:create db:structure:load'
 alias rspec='spring rspec'
