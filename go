@@ -1,5 +1,2 @@
-export GOPATH=~/code/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-mkdir -p $GOBIN
+export PATH=$PATH:/usr/local/go/bin
 
