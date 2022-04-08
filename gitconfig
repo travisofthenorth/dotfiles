@@ -1,0 +1,8 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	new = checkout -b
+	del = branch -D
+	undo = reset HEAD~1 --mixed
