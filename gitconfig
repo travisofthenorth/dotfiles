@@ -6,3 +6,4 @@
 	new = checkout -b
 	del = branch -D
 	undo = reset HEAD~1 --mixed
+	can = commit --amend --no-edit
