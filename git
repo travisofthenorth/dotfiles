@@ -18,6 +18,10 @@ function git_fetch_upstream_and_rebase() {
   git rebase master
 }
 
+alias delete_branches='xargs -n 1 git branch -D'
 alias show_merged='git branch --merged | grep -v "\*" | grep -v master | grep -v main'
 alias delete_merged='show_merged | xargs -n 1 git branch -d'
-alias delete_branches='git branch | grep -v master | grep -v main | xargs -n 1 git branch -d'
+alias delete_dev_branches='git branch | grep -v master | grep -v main | delete_branches'
+
+alias gdsm_dryrun='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && echo "$branch is merged into master and can be deleted"; done'
+alias gdsm='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
