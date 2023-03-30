@@ -1,12 +1,12 @@
 alias gac='git add . && git commit -m'
-alias gfy='git add . && git can'
+alias gfy='git add . && git commit --amend --no-edit'
 alias grm='git fetch origin master:master && git rebase master'
-alias gum='gco master && git pull'
+alias gum='git checkout master && git pull'
 
 function git_reset_origin_to_upstream() {
   remote=${1:-upstream}
   git fetch $remote master:master
-  gco master
+  git checkout master
   git reset --hard $remote/master
   ggpush
 }
@@ -14,7 +14,7 @@ function git_reset_origin_to_upstream() {
 function git_fetch_upstream_and_rebase() {
   current_branch=$(current_branch)
   git_reset_origin_to_upstream $1 || exit 1
-  gco $current_branch
+  git checkout $current_branch
   git rebase master
 }
 
